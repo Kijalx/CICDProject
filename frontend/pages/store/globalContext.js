@@ -19,7 +19,7 @@ export function GlobalContextProvider(props) {
   async function getAllBooks() {
     try {
       const response = await fetch('/api/get-books', {
-        method: 'POST',
+        method: 'GET',
         body: JSON.stringify({ books: 'all' }),
         headers: {
           'Content-Type': 'application/json'
