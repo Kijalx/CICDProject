@@ -46,3 +46,17 @@
   background-color: #2427b4;
   border-color: #0e11a5;
 }
+
+.link {
+  font-size: 20px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.link a {
+  text-decoration: none;
+  text-decoration-line: underline;
+  font-size: 17px;
+  color: black;
+}
