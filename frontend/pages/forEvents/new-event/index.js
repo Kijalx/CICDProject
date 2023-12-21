@@ -10,7 +10,7 @@ function NewEventPage() {
 
     async function addEventHandler(enteredBookData)  {
         await globalCtx.updateGlobals({cmd: 'addEvent', newVal: enteredEventData})
-        router.push('/');
+        router.push('/events-open');
     }
 
     return <NewEventForm onAddEvent={addEventHandler} />

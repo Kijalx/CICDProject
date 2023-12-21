@@ -10,7 +10,7 @@ function NewBookPage() {
 
     async function addBookHandler(enteredBookData)  {
         await globalCtx.updateGlobals({cmd: 'addBook', newVal: enteredBookData})
-        router.push('/');
+        router.push('/books-open');
     }
 
     return <NewBookForm onAddBook={addBookHandler} />

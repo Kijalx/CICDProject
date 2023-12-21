@@ -9,12 +9,12 @@ function BookItem(props) {
   const globalCtx = useContext(GlobalContext);
 
   const showDetailsHandler = () => {
-    router.push(`/` + props.id);
+    router.push(`/forBooks/` + props.id);
   };
 
   async function removeBookHandler() {
     await globalCtx.updateGlobals({ cmd: 'removeBook', newVal: props.id });
-    router.push('/');
+    router.push('/forBooks/');
   }
 
   return (
