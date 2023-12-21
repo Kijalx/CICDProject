@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/books")
 public class MongoController {
 
     private final MongoDBConnector mongoDBConnector;
@@ -34,5 +33,16 @@ public class MongoController {
     @GetMapping("/{id}")
     public Document getBookById(@PathVariable String id) {
         return mongoDBConnector.getBookById(id);
+    }
+
+    @PostMapping("/removeBook")
+    public Map<String, String> deleteBookById(@RequestBody Map<String, String> body) {
+        String id = body.get("bookID");
+        System.out.println(body);
+        System.out.println("Received bookID: " + id);
+        boolean isDeleted = mongoDBConnector.deleteBookById(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("deleteBookResponse", isDeleted ? "success" : "failure");
+        return response;
     }
 }

@@ -61,7 +61,7 @@ export function GlobalContextProvider(props) {
     if (command.cmd === 'removeBook') {
       const response = await fetch('/api/remove-book', {
         method: 'POST',
-        body: JSON.stringify({ _id: command.newVal }),
+        body: JSON.stringify({ bookID: command.newVal }),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -70,7 +70,7 @@ export function GlobalContextProvider(props) {
       if (data.removeBookResponse === 'success') {
         setGlobals((previousGlobals) => ({
           ...previousGlobals,
-          books: previousGlobals.books.filter(book => book._id !== command.newVal)
+          books: previousGlobals.books.filter(book => book.bookID !== command.newVal)
         }));
       } else {
         console.error('Error removing book:', data.error);

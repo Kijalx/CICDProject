@@ -19,6 +19,7 @@ function NewBookForm(props) {
 
     const BookData = {
       title: enteredTitle,
+      bookID: enteredTitle,
       image: enteredImage,
       author: enteredAuthor,
       description: enteredDescription,
