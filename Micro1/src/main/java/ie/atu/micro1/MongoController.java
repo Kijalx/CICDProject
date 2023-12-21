@@ -18,7 +18,7 @@ public class MongoController {
         this.mongoDBConnector = mongoDBConnector;
     }
 
-    @GetMapping("/getBooks")
+    @PostMapping("/getBooks")
     public Map<String, Object> getBooks() {
         return mongoDBConnector.getBooks();
     }
