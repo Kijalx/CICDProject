@@ -15,7 +15,7 @@ function BookDetail(props) {
 
 				<div className={classes.text}>
 					<div className={classes.description}>Description</div>
-					<div className={classes.meetup}>
+					<div className={classes.book}>
 						<div>{props.description}</div>
 					</div>
 					<div className={classes.author}>

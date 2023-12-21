@@ -9,7 +9,7 @@ function EventItem(props) {
   const globalCtx = useContext(GlobalContext);
 
   const showDetailsHandler = () => {
-    router.push(`/` + props.id);
+    router.push(`/forEvent/` + props.id);
   };
 
   return (
