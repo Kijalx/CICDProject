@@ -1,6 +1,6 @@
 async function removeBook(req, res) {
   try {
-    const response = await fetch('http://localhost:8080/removeBook', {
+    const response = await fetch('http://micro1:8080/removeBook', {
       method: 'POST',
       body: JSON.stringify({ bookID: req.body.bookID }),
       headers: {
