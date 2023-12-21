@@ -9,8 +9,8 @@ function BookList(props) {
     <ul className={classes.list}>
       {books.map((book) => (
         <BookItem
-          key={book._id}
-          id={book._id}
+          key={book.bookID}
+          id={book.bookID}
           image={book.image}
           title={book.title}
           author={book.author}

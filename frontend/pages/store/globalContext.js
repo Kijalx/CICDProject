@@ -19,22 +19,23 @@ export function GlobalContextProvider(props) {
   async function getAllBooks() {
     try {
       const response = await fetch('/api/get-books', {
-        method: 'POST',
-        body: JSON.stringify({ books: 'all' }),
+        method: 'GET', // Ensure it's a GET request
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
+
       const data = await response.json();
       setGlobals((previousGlobals) => ({
         ...previousGlobals,
         books: data.books,
-        dataLoaded: true
+        dataLoaded: true,
       }));
     } catch (error) {
       console.error('Error fetching books:', error);
     }
   }
+
 
   async function editGlobalData(command) {
     if (command.cmd === 'hideHamMenu') {
@@ -60,7 +61,7 @@ export function GlobalContextProvider(props) {
     if (command.cmd === 'removeBook') {
       const response = await fetch('/api/remove-book', {
         method: 'POST',
-        body: JSON.stringify({ _id: command.newVal }),
+        body: JSON.stringify({ bookID: command.newVal }),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -69,7 +70,7 @@ export function GlobalContextProvider(props) {
       if (data.removeBookResponse === 'success') {
         setGlobals((previousGlobals) => ({
           ...previousGlobals,
-          books: previousGlobals.books.filter(book => book._id !== command.newVal)
+          books: previousGlobals.books.filter(book => book.bookID !== command.newVal)
         }));
       } else {
         console.error('Error removing book:', data.error);
