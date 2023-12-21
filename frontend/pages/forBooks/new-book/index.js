@@ -1,7 +1,7 @@
 // our-dimain.com/new-Book
-import NewBookForm from '../../components/books/NewBookForm'
+import NewBookForm from '../../../components/books/NewBookForm'
 import { useRouter } from 'next/router';
-import GlobalContext from "../../pages/store/globalContext"
+import GlobalContext from "../../store/globalContext"
 import { useContext } from 'react'
 
 function NewBookPage() {

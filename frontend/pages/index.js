@@ -1,15 +1,14 @@
-import BookList from '../components/books/BookList'
-import { useContext } from "react";
-import GlobalContext from "./store/globalContext"
 import classes from './main.module.css'
 
 function HomePage() {
-    const globalCtx = useContext(GlobalContext)
-
-    if (globalCtx.theGlobalObject.dataLoaded === true) {
-        return <BookList books={globalCtx.theGlobalObject.books} />
-    }
-    return <div className={classes.mainDiv}>We are loading your Books for you, Please wait...</div>
+    return <div className={classes.mainDiv}>
+        <div className={classes.welcome}>
+            Welcome to the ATU Library
+            <div className={classes.welcomeLower}>
+                Check out recent events or books added
+            </div>
+        </div>
+    </div>
 }
 
 export default HomePage;

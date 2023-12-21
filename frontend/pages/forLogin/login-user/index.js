@@ -1,7 +1,7 @@
 // our-dimain.com/new-User
-import Login from '../../components/login/Login'
+import Login from '../../../components/login/Login'
 import { useRouter } from 'next/router';
-import GlobalContext from "../../pages/store/globalContext"
+import GlobalContext from "../../store/globalContext"
 import { useContext } from 'react'
 
 function LoginUser() {

@@ -8,28 +8,21 @@ function MainNavigation() {
   const globalCtx = useContext(GlobalContext)
   const router = useRouter()
 
-  const contents = [
-    {title: 'Add a new Book', webAddress: '/new-book'},
-    {title: 'Printer', webAddress: '/new-book'},
-    {title: 'Login', webAddress: '/login'},
-  ]
-
   return (
     <header className={classes.header}>
-      <div className={classes.title}>ATU Library</div>
+      <Link className={classes.title} href='/'>ATU Library</Link>
       <nav>
           <ul>
             <li>
-              <Link href='/'>All Books</Link>
+                <Link href='/forBooks/new-book'>Add New Book</Link>
+                <Link href='/forBooks/books-open'>All Books</Link>
             </li>
           <li>
-              <Link href='/login-user'>All Events</Link>
+              <Link href='/forEvents/new-event'>Add New Event</Link>
+              <Link href='/forEvents/events-open'>All Events</Link>
           </li>
             <li>
-              <Link href='/new-book'>Add New Book</Link>
-            </li>
-            <li>
-              <Link href='/login-user'>Login</Link>
+              <Link href='/forLogin/login-user'>Login</Link>
             </li>
           </ul>
       </nav>

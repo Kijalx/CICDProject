@@ -10,7 +10,7 @@ export default function BookDetailPage() {
     let bookDetails = null;
     for (let ii = 0; ii < globalCtx.theGlobalObject.books.length; ii++) {
         let temp = globalCtx.theGlobalObject.books[ii];
-        if (temp._id.trim() == router.query.bookId.trim()) {
+        if (temp._id.trim() === router.query.bookId.trim()) {
             bookDetails = temp;
             break;
         }

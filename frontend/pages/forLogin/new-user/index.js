@@ -1,7 +1,7 @@
 // our-dimain.com/new-User
-import NewUser from '../../components/login/NewUser'
+import NewUser from '../../../components/login/NewUser'
 import { useRouter } from 'next/router';
-import GlobalContext from "../../pages/store/globalContext"
+import GlobalContext from "../../store/globalContext"
 import { useContext } from 'react'
 
 function AddUser() {

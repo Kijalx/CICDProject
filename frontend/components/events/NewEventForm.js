@@ -31,15 +31,15 @@ function NewEventForm(props) {
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor='title'>Book Title</label>
+          <label htmlFor='title'>Event Title</label>
           <input type='text' required id='title' placeholder='Event Title...' ref={titleInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='image'>Book Cover</label>
+          <label htmlFor='image'>Event Image</label>
           <input type='url' required id='image' placeholder='URL of Cover...' ref={imageInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='author'>Author</label>
+          <label htmlFor='author'>Publisher/Group</label>
           <input type='text' required id='publisher' placeholder='Publisher Name...' ref={publisherInputRef} />
         </div>
         <div className={classes.control}>
@@ -53,7 +53,7 @@ function NewEventForm(props) {
           ></textarea>
         </div>
         <div className={classes.actions}>
-          <button>Add Book</button>
+          <button>Add Event</button>
         </div>
       </form>
     </Card>
