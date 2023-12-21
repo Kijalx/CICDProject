@@ -22,6 +22,9 @@ function MainNavigation() {
             <li>
               <Link href='/'>All Books</Link>
             </li>
+          <li>
+              <Link href='/login-user'>All Events</Link>
+          </li>
             <li>
               <Link href='/new-book'>Add New Book</Link>
             </li>
