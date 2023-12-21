@@ -2,6 +2,7 @@ package ie.atu.micro1;
 
 import com.mongodb.MongoException;
 import com.mongodb.client.*;
+import com.mongodb.client.result.DeleteResult;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
@@ -66,11 +67,25 @@ public class MongoDBConnector {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
             MongoCollection<Document> collection = database.getCollection(collectionName);
 
-            Document query = new Document("_id", new ObjectId(id));
+            Document query = new Document("bookID", new ObjectId(id));
             return collection.find(query).first();
         } catch (MongoException e) {
             e.printStackTrace();
         }
         return null;
+    }
+    public boolean deleteBookById(String bookId) {
+        try {
+            MongoDatabase database = mongoClient.getDatabase(databaseName);
+            MongoCollection<Document> collection = database.getCollection(collectionName);
+
+            Document query = new Document("bookID", bookId);
+            DeleteResult result = collection.deleteOne(query);
+            System.out.println(result.getDeletedCount()>0);
+            return result.getDeletedCount() > 0;
+        } catch (MongoException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
