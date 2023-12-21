@@ -1,6 +1,6 @@
-import BookDetail from '../../components/books/BookDetail';
+import BookDetail from '../../../components/books/BookDetail';
 import { useRouter } from 'next/router';
-import GlobalContext from "../../pages/store/globalContext";
+import GlobalContext from "../../store/globalContext";
 import { useContext } from 'react';
 
 export default function BookDetailPage() {
