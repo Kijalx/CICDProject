@@ -105,7 +105,7 @@ function Login(props) {
             </form>
             <div className={classes.link}>
                 <div>Dont have an Account?</div>
-                <Link href='/new-user'>Create one here</Link>
+                <Link href='/forLogin/new-user'>Create one here</Link>
             </div>
         </Card>
     );

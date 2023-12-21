@@ -8,17 +8,3 @@
     flex-direction: row;
     font-weight: bold;
 }
-
-.welcome {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-weight: bold;
-}
-
-.welcomeLower {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-weight: bold;
-}
