@@ -19,22 +19,23 @@ export function GlobalContextProvider(props) {
   async function getAllBooks() {
     try {
       const response = await fetch('/api/get-books', {
-        method: 'GET',
-        body: JSON.stringify({ books: 'all' }),
+        method: 'GET', // Ensure it's a GET request
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
+
       const data = await response.json();
       setGlobals((previousGlobals) => ({
         ...previousGlobals,
         books: data.books,
-        dataLoaded: true
+        dataLoaded: true,
       }));
     } catch (error) {
       console.error('Error fetching books:', error);
     }
   }
+
 
   async function editGlobalData(command) {
     if (command.cmd === 'hideHamMenu') {

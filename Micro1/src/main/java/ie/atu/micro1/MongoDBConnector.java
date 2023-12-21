@@ -1,6 +1,5 @@
 package ie.atu.micro1;
 
-import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoException;
 import com.mongodb.client.*;
 import org.bson.Document;
@@ -8,23 +7,26 @@ import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MongoDBConnector {
+
     private final MongoClient mongoClient;
-    String uri = "mongodb+srv://alekskijewski88:YJTlAnfysBUSsjZw@cluster0.qjqgr8r.mongodb.net/?retryWrites=true&w=majority";
-    String databaseName = "books";
-    String collectionName = "books";
+    private final String databaseName = "books";
+    private final String collectionName = "books";
 
     public MongoDBConnector() {
+        String uri = "mongodb+srv://alekskijewski88:YJTlAnfysBUSsjZw@cluster0.qjqgr8r.mongodb.net/?retryWrites=true&w=majority";
         this.mongoClient = MongoClients.create(uri);
-        this.databaseName = databaseName;
-        this.collectionName = collectionName;
     }
 
-    public List<Document> getBooks() {
+    public Map<String, Object> getBooks() {
+        Map<String, Object> response = new HashMap<>();
         List<Document> bookList = new ArrayList<>();
+
         try {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
             MongoCollection<Document> collection = database.getCollection(collectionName);
@@ -37,11 +39,17 @@ public class MongoDBConnector {
                     bookList.add(document);
                 }
             }
+
+            response.put("books", bookList);
         } catch (MongoException e) {
             e.printStackTrace();
+            response.put("books", List.of());
+            response.put("error", "Failed to fetch books");
         }
-        return bookList;
+
+        return response;
     }
+
     public void addBook(Document book) {
         try {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
@@ -52,6 +60,7 @@ public class MongoDBConnector {
             e.printStackTrace();
         }
     }
+
     public Document getBookById(String id) {
         try {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
@@ -63,10 +72,5 @@ public class MongoDBConnector {
             e.printStackTrace();
         }
         return null;
-    }
-    public void close() {
-        if (mongoClient != null) {
-            mongoClient.close();
-        }
     }
 }
