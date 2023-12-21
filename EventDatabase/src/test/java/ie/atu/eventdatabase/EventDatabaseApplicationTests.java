@@ -1,10 +1,10 @@
-package ie.atu.micro2;
+package ie.atu.eventdatabase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Micro2ApplicationTests {
+class EventDatabaseApplicationTests {
 
 	@Test
 	void contextLoads() {

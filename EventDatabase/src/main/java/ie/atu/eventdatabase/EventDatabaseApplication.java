@@ -1,13 +1,13 @@
-package ie.atu.micro2;
+package ie.atu.eventdatabase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Micro2Application {
+public class EventDatabaseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Micro2Application.class, args);
+		SpringApplication.run(EventDatabaseApplication.class, args);
 	}
 
 }

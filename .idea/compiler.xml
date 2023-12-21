@@ -7,15 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Micro1" />
+        <module name="EventDatabase" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="database" target="17" />
+      <module name="Micro1" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="EventDatabase" options="-parameters" />
       <module name="Micro1" options="-parameters" />
     </option>
   </component>
