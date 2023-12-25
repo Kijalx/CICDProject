@@ -8,9 +8,9 @@ function NewEventPage() {
     const router = useRouter()
     const globalCtx = useContext(GlobalContext)
 
-    async function addEventHandler(enteredBookData)  {
+    async function addEventHandler(enteredEventData)  {
         await globalCtx.updateGlobals({cmd: 'addEvent', newVal: enteredEventData})
-        router.push('/events-open');
+        router.push('/forEvents/events-open');
     }
 
     return <NewEventForm onAddEvent={addEventHandler} />

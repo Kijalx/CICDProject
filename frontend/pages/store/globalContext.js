@@ -1,5 +1,6 @@
 // pages/store/globalContext.js
 import { createContext, useState, useEffect } from 'react';
+import {console} from "next/dist/compiled/@edge-runtime/primitives/console";
 
 const GlobalContext = createContext();
 
@@ -14,12 +15,13 @@ export function GlobalContextProvider(props) {
 
   useEffect(() => {
     getAllBooks();
+    getAllEvents();
   }, []);
 
   async function getAllBooks() {
     try {
       const response = await fetch('/api/get-books', {
-        method: 'GET', // Ensure it's a GET request
+        method: 'POST', // Ensure it's a GET request
         headers: {
           'Content-Type': 'application/json',
         },
@@ -35,6 +37,26 @@ export function GlobalContextProvider(props) {
       console.error('Error fetching books:', error);
     }
   }
+  async function getAllEvents() {
+    try {
+      const response = await fetch('/api/get-events', {
+        method: 'POST', // Ensure it's a GET request
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+      setGlobals((previousGlobals) => ({
+        ...previousGlobals,
+        events: data.events,
+        dataLoaded: true,
+      }));
+    } catch (error) {
+      console.error('Error fetching books:', error);
+    }
+  }
+
 
 
   async function editGlobalData(command) {
@@ -56,6 +78,20 @@ export function GlobalContextProvider(props) {
       setGlobals((previousGlobals) => ({
         ...previousGlobals,
         books: [...previousGlobals.books, command.newVal]
+      }));
+    }
+    if (command.cmd === 'addEvent') {
+      const response = await fetch('/api/new-event', {
+        method: 'POST',
+        body: JSON.stringify(command.newVal),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      setGlobals((previousGlobals) => ({
+        ...previousGlobals,
+        events: [...previousGlobals.events, command.newVal]
       }));
     }
     if (command.cmd === 'removeBook') {

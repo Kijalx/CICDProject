@@ -19,6 +19,7 @@ function NewEventForm(props) {
 
     const EventData = {
       title: enteredTitle,
+      eventID: enteredTitle,
       image: enteredImage,
       publisher: enteredPublisher,
       description: enteredDescription,
