@@ -17,12 +17,12 @@ public class EventController {
     }
 
     @PostMapping("/getEvents")
-    public Map<String, Object> getBooks() {
+    public Map<String, Object> getEvents() {
         return eventService.getEvent();
     }
 
     @PostMapping("/addEvent")
-    public Map<String, String> addBook(@RequestBody Document event) {
+    public Map<String, String> addEvent(@RequestBody Document event) {
         eventService.addEvent(event);
         Map<String, String> response = new HashMap<>();
         response.put("saveBookResponse", "success");
@@ -30,12 +30,12 @@ public class EventController {
     }
 
     @GetMapping("/{id}")
-    public Document getBookById(@PathVariable String id) {
+    public Document getEventById(@PathVariable String id) {
         return eventService.getEventById(id);
     }
 
     @PostMapping("/removeBook")
-    public Map<String, String> deleteBookById(@RequestBody Map<String, String> body) {
+    public Map<String, String> deleteEventById(@RequestBody Map<String, String> body) {
         String id = body.get("eventID");
         System.out.println(body);
         System.out.println("Received eventID: " + id);
