@@ -14,7 +14,7 @@ function BookItem(props) {
 
   async function removeBookHandler() {
     await globalCtx.updateGlobals({ cmd: 'removeBook', newVal: props.id });
-    router.push('/forBooks/');
+    router.push('/forBooks/books-open');
   }
 
   return (
