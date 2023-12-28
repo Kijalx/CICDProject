@@ -41,3 +41,40 @@
 .header a.active {
   color: white;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownToggle {
+  text-decoration: underline;
+  font-size: 25px;
+  color: #f8f8f8;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  background-color: rgb(54, 83, 117);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdownMenu li {
+  padding: 10px;
+}
+
+.dropdownActive .dropdownToggle {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.dropdownActive .dropdownMenu {
+  display: block;
+}
+
+
+
