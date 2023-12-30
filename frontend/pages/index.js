@@ -11,6 +11,7 @@ function HomePage() {
                 You can also Login to create and add Events and Books
             </div>
         </div>
+
     </div>
 }
 
