@@ -27,7 +27,7 @@ jobs:
       - name: Build bookDatabase Docker image
         working-directory: BookDatabase
         run: |
-          docker build -t your-docker-registry/book-database:latest .
+          docker build -t ykijalxx/book:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push kijalxx/book:latest
 
@@ -52,7 +52,7 @@ jobs:
       - name: Build eventDatabase Docker image
         working-directory: EventDatabase
         run: |
-          docker build -t your-docker-registry/book-database:latest .
+          docker build -t kijalxx/event:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push kijalxx/event:latest
 
