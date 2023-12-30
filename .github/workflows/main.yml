@@ -36,6 +36,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
       - name: Build eventDatabase
         working-directory: EventDatabase
         run: mvn package
@@ -63,7 +69,7 @@ jobs:
 
       - name: Build frontend
         working-directory: frontend
-        run: npm run dev
+        run: npm run build
 
       - name: Build frontend Docker image
         working-directory: frontend
