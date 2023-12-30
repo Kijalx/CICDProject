@@ -9,10 +9,16 @@ jobs:
   build-book-database:
     name: Book Database Build
     runs-on: ubuntu-latest
-##test
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
 
       - name: Build bookDatabase
         working-directory: BookDatabase
