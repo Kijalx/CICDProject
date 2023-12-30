@@ -67,6 +67,6 @@ jobs:
       - name: Build frontend Docker image
         working-directory: frontend
         run: |
-          docker build -t your-docker-registry/book-database:latest .
+          docker build -t kijalxx/app:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push kijalxx/app:latest
