@@ -27,7 +27,7 @@ jobs:
       - name: Build bookDatabase Docker image
         working-directory: BookDatabase
         run: |
-          docker build -t ykijalxx/book:latest .
+          docker build -t kijalxx/book:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push kijalxx/book:latest
 
