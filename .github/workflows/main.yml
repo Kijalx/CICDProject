@@ -28,7 +28,7 @@ jobs:
         working-directory: BookDatabase
         run: |
           docker build -t your-docker-registry/book-database:latest .
-          docker login -u ${{ "kijalxx" }} -p ${{ "dckr_pat_BtSGEmAo1QrXOwjBXG0HPXJrA_Y" }}
+          docker login -u ${{ kijalxx }} -p ${{ dckr_pat_BtSGEmAo1QrXOwjBXG0HPXJrA_Y }}
           docker push your-docker-registry/book-database:latest
 
   build-event-database:
