@@ -1,5 +1,4 @@
 FROM openjdk:17-jdk-slim
-ENV PROFILE=docker
 
 WORKDIR /app
 

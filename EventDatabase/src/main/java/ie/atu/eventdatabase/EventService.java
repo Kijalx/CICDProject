@@ -24,7 +24,7 @@ public class EventService {
     }
     public Map<String, Object> getEvent() {
         Map<String, Object> response = new HashMap<>();
-        List<Document> bookList = new ArrayList<>();
+        List<Document> eventList = new ArrayList<>();
 
         try {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
@@ -35,11 +35,11 @@ public class EventService {
             try (MongoCursor<Document> cursor = documents.iterator()) {
                 while (cursor.hasNext()) {
                     Document document = cursor.next();
-                    bookList.add(document);
+                    eventList.add(document);
                 }
             }
 
-            response.put("books", bookList);
+            response.put("events", eventList);
         } catch (MongoException e) {
             e.printStackTrace();
             response.put("books", List.of());
@@ -49,35 +49,35 @@ public class EventService {
         return response;
     }
 
-    public void addBook(Document book) {
+    public void addEvent(Document event) {
         try {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
             MongoCollection<Document> collection = database.getCollection(collectionName);
 
-            collection.insertOne(book);
+            collection.insertOne(event);
         } catch (MongoException e) {
             e.printStackTrace();
         }
     }
 
-    public Document getBookById(String id) {
+    public Document getEventById(String id) {
         try {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
             MongoCollection<Document> collection = database.getCollection(collectionName);
 
-            Document query = new Document("bookID", new ObjectId(id));
+            Document query = new Document("eventID", new ObjectId(id));
             return collection.find(query).first();
         } catch (MongoException e) {
             e.printStackTrace();
         }
         return null;
     }
-    public boolean deleteBookById(String bookId) {
+    public boolean deleteEventById(String eventId) {
         try {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
             MongoCollection<Document> collection = database.getCollection(collectionName);
 
-            Document query = new Document("bookID", bookId);
+            Document query = new Document("eventID", eventId);
             DeleteResult result = collection.deleteOne(query);
             System.out.println(result.getDeletedCount()>0);
             return result.getDeletedCount() > 0;

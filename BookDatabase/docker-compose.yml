@@ -2,16 +2,23 @@ version: '3.8'
 
 services:
   app:
-    image: app:latest
+    image: kijalxx/app
     ports:
       - "3000:3000"
     networks:
       - my_network
 
-  micro1:
-    image: kijalxx/micro1
+  book:
+    image: kijalxx/book
     ports:
       - "8080:8080"
+    networks:
+      - my_network
+
+  event:
+    image: kijalxx/event
+    ports:
+      - "8081:8081"
     networks:
       - my_network
 

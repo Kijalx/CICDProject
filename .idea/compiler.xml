@@ -8,11 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="EventDatabase" />
+        <module name="Micro1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="database" target="17" />
-      <module name="Micro1" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
