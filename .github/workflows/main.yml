@@ -26,7 +26,10 @@ jobs:
 
       - name: Build bookDatabase Docker image
         working-directory: BookDatabase
-        run: docker build -t kijalxx/book:latest .
+        run: |
+          docker build -t kijalxx/book:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push kijalxx/book:latest
 
   build-event-database:
     name: Event Database Build
@@ -48,7 +51,10 @@ jobs:
 
       - name: Build eventDatabase Docker image
         working-directory: EventDatabase
-        run: docker build -t kijalxx/event:latest .
+        run: |
+          docker build -t kijalxx/event:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push kijalxx/event:latest
 
   build-frontend:
     name: Frontend Build
@@ -58,19 +64,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-
-      - name: Install frontend dependencies
-        working-directory: frontend
-        run: npm install
-
-      - name: Build frontend
-        working-directory: frontend
-        run: npm run build
-
       - name: Build frontend Docker image
         working-directory: frontend
-        run: docker build -t kijalxx/app:latest .
+        run: |
+          docker build -t kijalxx/app:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push kijalxx/app:latest
