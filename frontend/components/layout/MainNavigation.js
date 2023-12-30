@@ -53,6 +53,9 @@ function MainNavigation() {
                         )}
                     </li>
                     <li>
+                        <Link href='/forPrinter/printer-open'>Printers</Link>
+                    </li>
+                    <li>
                         <Link href='/forLogin/login-user'>Login</Link>
                     </li>
                 </ul>
