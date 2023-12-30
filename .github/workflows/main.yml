@@ -26,7 +26,10 @@ jobs:
 
       - name: Build bookDatabase Docker image
         working-directory: BookDatabase
-        run: docker build -t kijalxx/book:latest .
+        run: |
+          docker build -t your-docker-registry/book-database:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push your-docker-registry/book-database:latest
 
   build-event-database:
     name: Event Database Build
@@ -65,7 +68,10 @@ jobs:
 
       - name: Install frontend dependencies
         working-directory: frontend
-        run: npm install
+        run: |
+          npm install
+          npm install next@latest
+
 
       - name: Build frontend
         working-directory: frontend
