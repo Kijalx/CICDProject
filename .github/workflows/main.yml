@@ -57,7 +57,7 @@ jobs:
 
       - name: Build frontend
         working-directory: frontend
-        run: npm run build
+        run: npm run dev
 
       - name: Build frontend Docker image
         working-directory: frontend
