@@ -67,7 +67,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '18.17.0'
 
       - name: Install frontend dependencies
         working-directory: frontend
@@ -78,7 +78,9 @@ jobs:
 
       - name: Build frontend
         working-directory: frontend
-        run: npm run build
+        run: |
+          npm -v
+          npm run build
 
       - name: Build frontend Docker image
         working-directory: frontend
