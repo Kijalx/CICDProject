@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - githubactionsv2
 
 jobs:
   build-book-database:
@@ -27,9 +27,9 @@ jobs:
       - name: Build bookDatabase Docker image
         working-directory: BookDatabase
         run: |
-          docker build -t kijalxx/book:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/book:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push kijalxx/book:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/book:latest
 
   build-event-database:
     name: Event Database Build
@@ -52,9 +52,9 @@ jobs:
       - name: Build eventDatabase Docker image
         working-directory: EventDatabase
         run: |
-          docker build -t kijalxx/event:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/event:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push kijalxx/event:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/event:latest
 
   build-frontend:
     name: Frontend Build
@@ -67,6 +67,6 @@ jobs:
       - name: Build frontend Docker image
         working-directory: frontend
         run: |
-          docker build -t kijalxx/app:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/app:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push kijalxx/app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/app:latest
