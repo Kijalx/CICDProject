@@ -19,7 +19,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="EventDatabase" options="" />
+      <module name="EventDatabase" options="-parameters" />
       <module name="EventDatabase (1)" options="-parameters" />
       <module name="Micro1" options="-parameters" />
     </option>
