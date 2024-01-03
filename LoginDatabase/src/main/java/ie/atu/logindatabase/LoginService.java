@@ -49,6 +49,17 @@ public class LoginService {
         return response;
     }
 
+    public void addLogin(Document login) {
+        try {
+            MongoDatabase database = mongoClient.getDatabase(databaseName);
+            MongoCollection<Document> collection = database.getCollection(collectionName);
+
+            collection.insertOne(login);
+        } catch (MongoException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Document getLoginById(String id) {
         try {
             MongoDatabase database = mongoClient.getDatabase(databaseName);
