@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-book-database:
+    name: Book Database Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build bookDatabase
+        working-directory: BookDatabase
+        run: mvn package
+
+      - name: Build bookDatabase Docker image
+        working-directory: BookDatabase
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/book:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/book:latest
+
+  build-event-database:
+    name: Event Database Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build eventDatabase
+        working-directory: EventDatabase
+        run: mvn package
+
+      - name: Build eventDatabase Docker image
+        working-directory: EventDatabase
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/event:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/event:latest
+
+  build-frontend:
+    name: Frontend Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build frontend Docker image
+        working-directory: frontend
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/app:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/app:latest

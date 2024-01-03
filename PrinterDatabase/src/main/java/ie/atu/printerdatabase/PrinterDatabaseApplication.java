@@ -1,13 +1,13 @@
-package com.example.demo;
+package ie.atu.printerdatabase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class PrinterDatabaseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(PrinterDatabaseApplication.class, args);
 	}
 
 }
