@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY target/PrinterDatabase-0.0.1-SNAPSHOT.jar /app
 
-EXPOSE 8080
+EXPOSE 8083
 
-CMD ["java","-jar","PrinterDatabase-0.0.1-SNAPSHOT.jar", "--spring.profiles.active=docker"]
+CMD ["java","-jar","PrinterDatabase-0.0.1-SNAPSHOT.jar", "--spring.profiles.active=default"]

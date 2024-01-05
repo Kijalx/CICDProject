@@ -70,3 +70,53 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/app:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push ${{ secrets.DOCKER_USERNAME }}/app:latest
+
+  build-login-database:
+    name: Login Database Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build LoginDatabase
+        working-directory: LoginDatabase
+        run: mvn package
+
+      - name: Build LoginDatabase Docker image
+        working-directory: LoginDatabase
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/login:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/login:latest
+
+  build-printer-database:
+    name: Printer Database Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build printerDatabase
+        working-directory: PrinterDatabase
+        run: mvn package
+
+      - name: Build printerDatabase Docker image
+        working-directory: PrinterDatabase
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/printer:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/printer:latest
