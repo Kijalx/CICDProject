@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - test
 
 jobs:
   build-book-database:
@@ -23,6 +23,10 @@ jobs:
       - name: Build bookDatabase
         working-directory: BookDatabase
         run: mvn package
+
+      - name: Run bookDatabase Tests
+        working-directory: BookDatabase
+        run: mvn test
 
       - name: Build bookDatabase Docker image
         working-directory: BookDatabase
@@ -48,6 +52,10 @@ jobs:
       - name: Build eventDatabase
         working-directory: EventDatabase
         run: mvn package
+
+      - name: Run eventDatabase Tests
+        working-directory: EventDatabase
+        run: mvn test
 
       - name: Build eventDatabase Docker image
         working-directory: EventDatabase
@@ -89,6 +97,10 @@ jobs:
         working-directory: LoginDatabase
         run: mvn package
 
+      - name: Run LoginDatabase Tests
+        working-directory: LoginDatabase
+        run: mvn test
+
       - name: Build LoginDatabase Docker image
         working-directory: LoginDatabase
         run: |
@@ -113,6 +125,10 @@ jobs:
       - name: Build printerDatabase
         working-directory: PrinterDatabase
         run: mvn package
+
+      - name: Run PrinterDatabase Tests
+        working-directory: PrinterDatabase
+        run: mvn test
 
       - name: Build printerDatabase Docker image
         working-directory: PrinterDatabase
