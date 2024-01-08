@@ -13,3 +13,9 @@ function PrinterPage() {
 }
 
 export default PrinterPage;
+
+//return <PrinterItem
+//   image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9fboB3F4hULco6ruCF7jUh4N15re-vXEV-g&usqp=CAU'
+//    title = 'Printer 1'
+//    status = 'Status: Online'
+//></PrinterItem>
