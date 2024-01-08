@@ -22,6 +22,20 @@ services:
     networks:
       - my_network
 
+  login:
+    image: kijalxx/login
+    ports:
+      - "8082:8082"
+    networks:
+      - my_network
+
+  printer:
+    image: kijalxx/printer
+    ports:
+      - "8083:8083"
+    networks:
+      - my_network
+
 networks:
   my_network:
     driver: bridge

@@ -14,6 +14,7 @@ function NewUser(props) {
         event.preventDefault();
 
         const enteredEmail = emailInputRef.current.value;
+        const loginID = enteredEmail;
         const enteredName = nameInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
         const enteredConfirmPassword = passwordConfirmInputRef.current.value;
@@ -21,6 +22,7 @@ function NewUser(props) {
 
         const UserData = {
             email: enteredEmail,
+            loginID: enteredEmail,
             name: enteredName,
             password: enteredPassword,
             confirmPassword: enteredConfirmPassword,

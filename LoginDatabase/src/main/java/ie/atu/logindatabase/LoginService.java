@@ -62,10 +62,11 @@ public class LoginService {
 
     public Document getLoginById(String id) {
         try {
+            System.out.println(id);
             MongoDatabase database = mongoClient.getDatabase(databaseName);
             MongoCollection<Document> collection = database.getCollection(collectionName);
+            Document query = new Document("loginID", id);
 
-            Document query = new Document("loginID", new ObjectId(id));
             return collection.find(query).first();
         } catch (MongoException e) {
             e.printStackTrace();
