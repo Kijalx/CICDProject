@@ -17,6 +17,7 @@ export function GlobalContextProvider(props) {
     getAllBooks();
     getAllEvents();
     getAllLogin();
+    getAllPrinters();
   }, []);
 
   async function getAllBooks() {
@@ -76,7 +77,25 @@ export function GlobalContextProvider(props) {
       console.error('Error fetching books:', error);
     }
   }
+  async function getAllPrinters() {
+    try {
+      const response = await fetch('/api/get-printer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
+      const data = await response.json();
+      setGlobals((previousGlobals) => ({
+        ...previousGlobals,
+        printers: data.printers,
+        dataLoaded: true,
+      }));
+    } catch (error) {
+      console.error('Error fetching books:', error);
+    }
+  }
 
 
   async function editGlobalData(command) {

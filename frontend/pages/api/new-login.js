@@ -1,7 +1,7 @@
 // /api/new-meetup
 
 async function handler(req, res) { // can be called anything you like
-  const response = await fetch('http://localhost:8082/addLogin', {
+  const response = await fetch('http://login:8082/addLogin', {
     method: 'POST',
     body: JSON.stringify(req.body),
     headers: {
