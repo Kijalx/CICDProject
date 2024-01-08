@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - printer
+      - main
 
 jobs:
   build-book-database:
