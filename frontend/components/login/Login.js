@@ -3,25 +3,22 @@ import {useRef, useState} from "react";
 import classes from '../books/NewBookForm.module.css';
 import Card from "../ui/Card";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 function Login(props) {
     const emailInputRef = useRef();
     const passwordInputRef= useRef();
-
+    const router = useRouter(); // Initialize useRouter
     function submitHandler(event) {
         event.preventDefault();
-
-        const enteredEmail = emailInputRef.current.value;
-        const enteredPassword = passwordInputRef.current.value;
-
-        const UserData = {
-            email: enteredEmail,
-            password: enteredPassword,
-        };
-
-        props.onAddUser(UserData);
+        const isUser = props.login.find((user) => user.email === input.email && user.password === input.password);
+        if(isUser){
+            router.push('/');
+        }
+        else{
+            return alert("Account not recognised");
+        }
     }
-
     const [input , setInput] = useState({
         email:'',
         password: ''

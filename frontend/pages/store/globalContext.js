@@ -68,6 +68,7 @@ export function GlobalContextProvider(props) {
       });
 
       const data = await response.json();
+      console.log(data.login);
       setGlobals((previousGlobals) => ({
         ...previousGlobals,
         login: data.login,
