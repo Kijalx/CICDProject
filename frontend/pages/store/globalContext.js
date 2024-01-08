@@ -17,6 +17,7 @@ export function GlobalContextProvider(props) {
     getAllBooks();
     getAllEvents();
     getAllLogin();
+    getAllPrinters();
   }, []);
 
   async function getAllBooks() {
@@ -78,7 +79,7 @@ export function GlobalContextProvider(props) {
   }
   async function getAllPrinters() {
     try {
-      const response = await fetch('/api/get-printers', {
+      const response = await fetch('/api/get-printer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

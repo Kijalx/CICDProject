@@ -7,6 +7,7 @@ async function handler(req, res) { // can be called anything you like
         }
     });
     const data = await response.json();
+    console.log(data);
     res.json(data);
 }
 
