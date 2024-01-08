@@ -7,7 +7,7 @@ function PrinterPage() {
     const globalCtx = useContext(GlobalContext)
 
     if (globalCtx.theGlobalObject.dataLoaded === true) {
-        return <PrinterList events={globalCtx.theGlobalObject.printer} />
+        return <PrinterList printers={globalCtx.theGlobalObject.printers} />
     }
     return <div className={classes.mainDiv}>We are connecting to the Printers, please wait...</div>
 }

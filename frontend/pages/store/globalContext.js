@@ -89,7 +89,7 @@ export function GlobalContextProvider(props) {
       const data = await response.json();
       setGlobals((previousGlobals) => ({
         ...previousGlobals,
-        printer: data.printer,
+        printers: data.printers,
         dataLoaded: true,
       }));
     } catch (error) {
