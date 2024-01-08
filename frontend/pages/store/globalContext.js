@@ -16,6 +16,7 @@ export function GlobalContextProvider(props) {
   useEffect(() => {
     getAllBooks();
     getAllEvents();
+    getAllLogin();
   }, []);
 
   async function getAllBooks() {
@@ -50,6 +51,25 @@ export function GlobalContextProvider(props) {
       setGlobals((previousGlobals) => ({
         ...previousGlobals,
         events: data.events,
+        dataLoaded: true,
+      }));
+    } catch (error) {
+      console.error('Error fetching books:', error);
+    }
+  }
+  async function getAllLogin() {
+    try {
+      const response = await fetch('/api/get-login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+      setGlobals((previousGlobals) => ({
+        ...previousGlobals,
+        login: data.login,
         dataLoaded: true,
       }));
     } catch (error) {
@@ -92,6 +112,20 @@ export function GlobalContextProvider(props) {
       setGlobals((previousGlobals) => ({
         ...previousGlobals,
         events: [...previousGlobals.events, command.newVal]
+      }));
+    }
+    if (command.cmd === 'addUser') {
+      const response = await fetch('/api/new-login', {
+        method: 'POST',
+        body: JSON.stringify(command.newVal),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      setGlobals((previousGlobals) => ({
+        ...previousGlobals,
+        books: [...previousGlobals.books, command.newVal]
       }));
     }
     if (command.cmd === 'removeBook') {
