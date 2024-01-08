@@ -3,17 +3,16 @@ import Login from '../../../components/login/Login'
 import { useRouter } from 'next/router';
 import GlobalContext from "../../store/globalContext"
 import { useContext } from 'react'
+import PrinterList from "../../../components/printer/PrinterList";
+import classes from "../../main.module.css";
 
 function LoginUser() {
-    const router = useRouter()
     const globalCtx = useContext(GlobalContext)
 
-    async function loginUserHandler(enteredUserData)  {
-        await globalCtx.updateGlobals({cmd: 'addUser', newVal: enteredUserData})
-        router.push('/');
+    if (globalCtx.theGlobalObject.dataLoaded === true) {
+        return <Login login={globalCtx.theGlobalObject.login} />
     }
 
-    return <Login onLoginUser={loginUserHandler} />
 }
 
 export default LoginUser
