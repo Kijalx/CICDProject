@@ -5,17 +5,21 @@ import Card from "../ui/Card";
 import Link from "next/link";
 import {useRouter} from "next/router";
 
+let loggedIn;
+
 function Login(props) {
     const emailInputRef = useRef();
     const passwordInputRef= useRef();
     const router = useRouter(); // Initialize useRouter
     function submitHandler(event) {
         event.preventDefault();
-        const isUser = props.login.find((user) => user.email === input.email && user.password === input.password);
+         const isUser = props.login.find((user) => user.email === input.email && user.password === input.password);
         if(isUser){
+            loggedIn = true;
             router.push('/');
         }
         else{
+            loggedIn = false;
             return alert("Account not recognised");
         }
     }
@@ -108,4 +112,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export {loggedIn, Login as default};
