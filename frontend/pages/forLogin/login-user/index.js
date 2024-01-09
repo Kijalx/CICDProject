@@ -12,7 +12,6 @@ function LoginUser() {
     if (globalCtx.theGlobalObject.dataLoaded === true) {
         return <Login login={globalCtx.theGlobalObject.login} />
     }
-
 }
 
 export default LoginUser

@@ -17,7 +17,7 @@ function MainNavigation() {
         setIsEventsDropdownOpen(!isEventsDropdownOpen);
         setIsBooksDropdownOpen(false);
     };
-    const selectItem = (item) => {
+    const selectItem = () => {
         setIsBooksDropdownOpen(false);
         setIsEventsDropdownOpen(false);
     };
