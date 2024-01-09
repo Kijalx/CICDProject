@@ -1,6 +1,7 @@
 import classes from './MainNavigation.module.css';
 import Link from 'next/link';
 import { useState } from 'react';
+import {loggedIn} from '../login/Login';
 
 function MainNavigation() {
 
@@ -16,7 +17,7 @@ function MainNavigation() {
         setIsEventsDropdownOpen(!isEventsDropdownOpen);
         setIsBooksDropdownOpen(false);
     };
-    const selectItem = (item) => {
+    const selectItem = () => {
         setIsBooksDropdownOpen(false);
         setIsEventsDropdownOpen(false);
     };
@@ -30,12 +31,15 @@ function MainNavigation() {
                     <span className={classes.dropdownToggle} onClick={toggleBooksDropdown}>Books</span>
                         {isBooksDropdownOpen && (
                             <ul className={classes.dropdownMenu}>
+                                {loggedIn === true &&
                                 <li onClick={() => selectItem('Add New Book')}>
                                     <Link href='/forBooks/new-book'>Add New Book</Link>
                                 </li>
+                                }
                                 <li onClick={() => selectItem('All Books')}>
                                     <Link href='/forBooks/books-open'>All Books</Link>
                                 </li>
+
                             </ul>
                         )}
                     </li>
@@ -43,12 +47,16 @@ function MainNavigation() {
                     <span className={classes.dropdownToggle} onClick={toggleEventsDropdown}>Events</span>
                         {isEventsDropdownOpen && (
                             <ul className={classes.dropdownMenu}>
+                                {loggedIn === true &&
                                 <li onClick={() => selectItem('Add New Event')}>
                                     <Link href='/forEvents/new-event'>Add New Event</Link>
                                 </li>
+                                }
                                 <li onClick={() => selectItem('All Events')}>
                                     <Link href='/forEvents/events-open'>All Events</Link>
                                 </li>
+
+
                             </ul>
                         )}
                     </li>
