@@ -23,6 +23,7 @@ Ensure docker is installed.
 
 ### Run
 Ensure docker is running
+In terminal
 ```bash
 cd {storagePath}/CICDProject/BookDatabase/
 docker-compose up -d
