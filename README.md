@@ -22,7 +22,7 @@ ATU Events, Books, and printing services
 Ensure docker is installed.
 
 ### Run
-Ensure docker is running
+# Ensure docker is running
 In terminal
 ```bash
 cd {storagePath}/CICDProject/BookDatabase/
