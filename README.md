@@ -9,20 +9,20 @@
 - [Prerequisites](#prerequisites)
 - [Run](#run)
 
-### About
+## About
 
 Library for ATU designed to help ATU students with finding useful information about the modules and books required for these modules
 
-### Features
+## Features
 
 ATU Events, Books, and printing services
 
-### Prerequisites
+## Prerequisites
 
 Ensure docker is installed.
 
-### Run
-# Ensure docker is running
+## Run
+### Ensure docker is running
 In terminal
 ```bash
 cd {storagePath}/CICDProject/BookDatabase/
