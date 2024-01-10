@@ -22,6 +22,7 @@ ATU Events, Books, and printing services
 Ensure docker is installed.
 
 ### Run
+Ensure docker is running
 ```bash
-cd /CICDProject/BookDatabase/
+cd {storagePath}/CICDProject/BookDatabase/
 docker-compose up -d
